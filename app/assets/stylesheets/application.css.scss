@@ -13,4 +13,9 @@
  *= require_tree .
  *= require bootstrap
  *= require_self
+ *= require
  */
+
+ @import "css/*";
+ @import "fonts/*";
+ @import "scss/icons/*";
