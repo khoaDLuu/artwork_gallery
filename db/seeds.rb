@@ -48,7 +48,7 @@ when "production"
   user.password_confirmation = ENV["ADMIN_PASSWORD"]
   user.email = ENV["ADMIN_EMAIL"]
   user.point = Faker::Number.within(range: 100..1000)
-  user.is_admin = is_admin
+  user.is_admin = true
   user.is_banned = false
   user.credit_card = ENV["ADMIN_CREDIT_CARD"]
   user.save!
