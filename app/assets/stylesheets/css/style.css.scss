@@ -30,16 +30,16 @@ File: scss
 /*Extra Variable*/
 /*Preloader*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
-@import url(../scss/icons/font-awesome/css/font-awesome.min.css);
-@import url(../scss/icons/simple-line-icons/css/simple-line-icons.css);
-@import url(../scss/icons/weather-icons/css/weather-icons.min.css);
-@import url(../scss/icons/linea-icons/linea.css);
-@import url(../scss/icons/themify-icons/themify-icons.css);
-@import url(../scss/icons/flag-icon-css/flag-icon.min.css);
-@import url(../scss/icons/material-design-iconic-font/css/materialdesignicons.min.css);
+@import "../scss/icons/font-awesome/css/font-awesome";
+@import "../scss/icons/simple-line-icons/css/simple-line-icons";
+@import "../scss/icons/weather-icons/css/weather-icons";
+@import "../scss/icons/linea-icons/linea";
+@import "../scss/icons/themify-icons/themify-icons";
+@import "../scss/icons/flag-icon-css/flag-icon.min";
+@import "../scss/icons/material-design-iconic-font/css/materialdesignicons.min";
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
-@import url(../css/spinners.css);
-@import url(../css/animate.css);
+@import "../css/spinners";
+@import "../css/animate";
 .preloader {
   width: 100%;
   height: 100%;
@@ -70,8 +70,8 @@ File: scss
  *  7. Widgets
  *  8. Custom Templates
  */
-/******************* 
-Global Styles 
+/*******************
+Global Styles
 *******************/
 * {
   outline: none; }
@@ -1516,7 +1516,7 @@ Notify
     opacity: 0.0; } }
 
 /*******************
-File Upload 
+File Upload
 ******************/
 .fileupload {
   overflow: hidden;
@@ -1585,7 +1585,7 @@ dropdown-item
 Custom-select
 ******************/
 .custom-select {
-  background: url("../../images/custom-select.png") right 0.75rem center no-repeat; }
+  background: img-url("../../images/custom-select.png") right 0.75rem center no-repeat; }
 
 /*******************
 textarea
@@ -1730,8 +1730,8 @@ File: scss
     top: calc(50% - 3.5px);
     left: calc(50% - 3.5px); }
 
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%; }
@@ -2210,7 +2210,7 @@ ul#themecolors {
   background: #00897b;
   border-color: #00897b; }
 
-/*============================================================== 
+/*==============================================================
  Buttons page
  ============================================================== */
 .button-group .btn {
@@ -2230,7 +2230,7 @@ ul#themecolors {
 .btn.active .text {
   display: none; }
 
-/*============================================================== 
+/*==============================================================
  Cards page
  ============================================================== */
 .card-actions {
@@ -2296,7 +2296,7 @@ ul#themecolors {
     background: #127ba3;
     border-color: #127ba3; }
 
-/*============================================================== 
+/*==============================================================
 Breadcrumb
  ============================================================== */
 .bc-colored .breadcrumb-item,
@@ -2312,7 +2312,7 @@ Breadcrumb
 .breadcrumb {
   margin-bottom: 0px; }
 
-/*============================================================== 
+/*==============================================================
  Ui-bootstrap
  ============================================================== */
 ul.list-icons {
@@ -2346,7 +2346,7 @@ ul.two-part {
 html body .accordion .card {
   margin-bottom: 0px; }
 
-/*============================================================== 
+/*==============================================================
  flot chart
  ============================================================== */
 .flot-chart {
@@ -2369,8 +2369,8 @@ body .jqstooltip {
   border-color: transparent;
   border-radius: 60px; }
 
-/*============================================================== 
-Easy pie chart 
+/*==============================================================
+Easy pie chart
  ============================================================== */
 .chart {
   position: relative;
@@ -2426,7 +2426,7 @@ Easy pie chart
     margin-left: 0.1em;
     font-size: .8em; }
 
-/*============================================================== 
+/*==============================================================
 Dashboard1 chart
  ============================================================== */
 .ct-charts {
@@ -2469,14 +2469,14 @@ html body #visitor .c3-chart-arcs-title {
     line-height: 12px;
     white-space: nowrap; }
 
-/*============================================================== 
+/*==============================================================
 Dashboard2 chart
  ============================================================== */
 .campaign {
   height: 280px; }
   .campaign .ct-series-a .ct-area {
     fill-opacity: 0.2;
-    fill: url(#gradient); }
+    fill: img-url(#gradient); }
   .campaign .ct-series-a .ct-line,
   .campaign .ct-series-a .ct-point {
     stroke: #28b62c;
@@ -2494,7 +2494,7 @@ Dashboard2 chart
 
 .campaign2 .ct-series-a .ct-area {
   fill-opacity: 0.2;
-  fill: url(#gradient); }
+  fill: img-url(#gradient); }
 
 .campaign2 .ct-series-a .ct-line,
 .campaign2 .ct-series-a .ct-point {
@@ -2518,7 +2518,7 @@ Dashboard2 chart
   stroke-width: 3px;
   stroke: rgba(255, 255, 255, 0.5); }
 
-/*============================================================== 
+/*==============================================================
 Dashboard3 chart
  ============================================================== */
 .total-sales {
@@ -2560,7 +2560,7 @@ Dashboard3 chart
 .calender-sidebar {
   background: rgba(0, 0, 0, 0.02); }
 
-/*============================================================== 
+/*==============================================================
 Dashboard4 chart
  ============================================================== */
 .ecomm-donute svg text {
@@ -2589,19 +2589,19 @@ Dashboard4 chart
     fill: #28b62c;
     fill-opacity: 0.2; }
 
-/*============================================================== 
+/*==============================================================
 Dashboard6 chart
  ============================================================== */
 .product-overview.table tbody tr td {
   vertical-align: middle; }
 
-/*============================================================== 
+/*==============================================================
 Widget-data
  ============================================================== */
 .sparkchart {
   margin-bottom: -2px; }
 
-/*============================================================== 
+/*==============================================================
 File upload
  ============================================================== */
 .btn-file {
@@ -2671,7 +2671,7 @@ File upload
 .fileinput.input-group > .btn-file {
   z-index: 1; }
 
-/*============================================================== 
+/*==============================================================
 widget-chart-page product review
  ============================================================== */
 .product-review {
@@ -2703,7 +2703,7 @@ widget-chart-page product review
   .customtab li a.nav-link:hover {
     color: #75caeb; }
 
-/*============================================================== 
+/*==============================================================
 Form addons page
 ============================================================== */
 /*Bootstrap select*/
@@ -2744,7 +2744,7 @@ Form addons page
 .input-form .btn {
   padding: 8px 12px; }
 
-/*============================================================== 
+/*==============================================================
 Form Material page
  ============================================================== */
 /*Material inputs*/
@@ -4757,12 +4757,12 @@ Stylish tooltip
   margin: -7px 0 0 -15px;
   width: 30px;
   height: 20px;
-  background: url(../../assets/images/tooltip/tooltip1.svg) no-repeat center center;
+  background: img-url("../../assets/images/tooltip/tooltip1.svg") no-repeat center center;
   background-size: 100%; }
 
 .tooltip-content3 {
   position: absolute;
-  background: url(../../assets/images/tooltip/shape1.svg) no-repeat center bottom;
+  background: img-url("../../assets/images/tooltip/shape1.svg") no-repeat center bottom;
   background-size: 100% 100%;
   z-index: 9999;
   width: 200px;
@@ -5023,7 +5023,7 @@ Error Page
 .error-box {
   height: 100%;
   position: fixed;
-  background: url(../../assets/images/background/error-bg.jpg) no-repeat center center #fff;
+  background: img-url("../../assets/images/background/error-bg.jpg") no-repeat center center #fff;
   width: 100%; }
   .error-box .footer {
     width: 100%;
@@ -5112,7 +5112,7 @@ Seach listing Page
       color: #28b62c; }
 
 /*******************
-Login register and recover password Page
+Login register and recover pass`rd Page
 ******************/
 .login-register {
   background-size: cover;
@@ -6616,7 +6616,7 @@ File: scss
   color: #28b62c; }
 
 .has-success .form-control-success {
-  background-image: url(../../assets/images/icon/success.svg); }
+  background-image: img-url("../../assets/images/icon/success.svg"); }
 
 .has-success .form-control {
   border-color: #28b62c; }
@@ -6625,7 +6625,7 @@ File: scss
   color: #ff851b; }
 
 .has-warning .form-control-warning {
-  background-image: url(../../assets/images/icon/warning.svg); }
+  background-image: img-url("../../assets/images/icon/warning.svg"); }
 
 .has-warning .form-control {
   border-color: #ff851b; }
@@ -6634,7 +6634,7 @@ File: scss
   color: #ff4136; }
 
 .has-danger .form-control-danger {
-  background-image: url(../../assets/images/icon/danger.svg); }
+  background-image: img-url("../../assets/images/icon/danger.svg"); }
 
 .has-danger .form-control {
   border-color: #ff4136; }
@@ -6699,8 +6699,8 @@ Author: Themedesigner
 Email: niravjoshi87@gmail.com
 File: scss
 */
-/*============================================================== 
- For Laptop & above all (1650px) 
+/*==============================================================
+ For Laptop & above all (1650px)
  ============================================================== */
 @media (min-width: 1650px) {
   .widget-app-columns {
@@ -6709,16 +6709,16 @@ File: scss
   .campaign {
     height: 365px !important; } }
 
-/*============================================================== 
- For Laptop & above all (1370px) 
+/*==============================================================
+ For Laptop & above all (1370px)
  ============================================================== */
 @media (max-width: 1370px) {
   .widget-app-columns {
     -webkit-column-count: 2;
     column-count: 2; } }
 
-/*-- ============================================================== 
- Small Desktop & above all (1024px) 
+/*-- ==============================================================
+ Small Desktop & above all (1024px)
  ============================================================== */
 @media (min-width: 1024px) {
   .page-wrapper {
@@ -6740,8 +6740,8 @@ File: scss
   .inbox-center a {
     width: 200px; } }
 
-/*-- ============================================================== 
- Ipad & above all(768px) 
+/*-- ==============================================================
+ Ipad & above all(768px)
  ============================================================== */
 @media (min-width: 768px) {
   .navbar-header {
@@ -6769,8 +6769,8 @@ File: scss
     flex-wrap: nowrap !important;
     -webkit-flex-wrap: nowrap !important; } }
 
-/*-- ============================================================== 
- Phone and below ipad(767px) 
+/*-- ==============================================================
+ Phone and below ipad(767px)
  ============================================================== */
 @media (max-width: 767px) {
   /*Header*/
