@@ -142,7 +142,7 @@
                 </div>
                 <div class="el-card-content">
 
-                  <% if not (current_user and current_user.is_admin) %>
+                  <% if not (current_user && current_user.is_admin) %>
 
                   <div class="row m-t-10">
                     <div class="col-3 b-r">
@@ -469,8 +469,9 @@
                               </div>
                               <div class="modal-body">
                                   <%= form_with  url: '#',
-                                                 method: 'post',
-                                                 local: true do |form| %>
+                                      method: 'post',
+                                      html: {onsubmit: "return false;"},
+                                      local: true do |form| %>
                                     <div class="form-body">
                                       <div class="row m-l-10 m-r-10">
                                         <%= form.label :reasons, class: 'col-12 control-label font-weight-bold text-left' %>
@@ -519,6 +520,9 @@
                         </div>
                       </div>
                     </div>
+
+                    <% end %>
+
                   </div>
 
                   <% end %>
@@ -643,59 +647,64 @@
         console.log('Download failed due to insufficient points.');  ///////////
       }
       else {
-        // OK, so the problem is, I don't want to have the server handling
-        // any images; it just has to return the img url. Client has to download
-        // the image located at that url.
-        // However, because of the hassle of CORS, it is impossible to directly
-        // download from an external url.
-        // Therefore, I did a search and came across this really useful code
-        // snippet (it's a little bit hackish though).
-        // In short, what it does are
-        //    1. fetch the image from the url
-        //    2. convert it into base64
-        //    3. attach the base64 text to an anchor tag (a)
-        //    4. simulate a click on the anchor tag to download the image
+        if (data.redirect_link) {
+          window.location = data.redirect_link;
+        }
+        else {
+          // OK, so the problem is, I don't want to have the server handling
+          // any images; it just has to return the img url. Client has to download
+          // the image located at that url.
+          // However, because of the hassle of CORS, it is impossible to directly
+          // download from an external url.
+          // Therefore, I did a search and came across this really useful code
+          // snippet (it's a little bit hackish though).
+          // In short, what it does are
+          //    1. fetch the image from the url
+          //    2. convert it into base64
+          //    3. attach the base64 text to an anchor tag (a)
+          //    4. simulate a click on the anchor tag to download the image
 
-        function arrayBufferToBase64(buffer) {
-          var binary = '';
-          var bytes = [].slice.call(new Uint8Array(buffer));
+          function arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = [].slice.call(new Uint8Array(buffer));
 
-          bytes.forEach((b) => binary += String.fromCharCode(b));
+            bytes.forEach((b) => binary += String.fromCharCode(b));
 
-          return window.btoa(binary);
-        };
+            return window.btoa(binary);
+          };
 
-        let options = {
-          method: 'GET',
-          mode: 'cors',
-          cache: 'default'
-        };
-        let url = data.img_url;
-        let request = new Request(url);
+          let options = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+          };
+          let url = data.img_url;
+          let request = new Request(url);
 
-        fetch(request, options)
-        .then((response) => {
-          return response.blob();
-        })
-        .then((imgBlob) => {
-          let imgType = imgBlob.type;
+          fetch(request, options)
+          .then((response) => {
+            return response.blob();
+          })
+          .then((imgBlob) => {
+            let imgType = imgBlob.type;
 
-          new Response(imgBlob).arrayBuffer()
-          .then((buffer) => {
-            let base64Flag = `data:${imgType};base64,`;
-            let imageStr = arrayBufferToBase64(buffer);
-            let base64Encoded = base64Flag + imageStr;
+            new Response(imgBlob).arrayBuffer()
+            .then((buffer) => {
+              let base64Flag = `data:${imgType};base64,`;
+              let imageStr = arrayBufferToBase64(buffer);
+              let base64Encoded = base64Flag + imageStr;
 
-            let a = document.createElement('a');
-            a.href = base64Encoded;
-            a.download = data.artw_name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+              let a = document.createElement('a');
+              a.href = base64Encoded;
+              a.download = data.artw_name;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            });
           });
-        });
 
-        $('#download-modal').modal('hide');
+          $('#download-modal').modal('hide');
+        }
       }
     });
 
