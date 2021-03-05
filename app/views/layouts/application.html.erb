@@ -1,15 +1,88 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ArtworkGellery</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <%= render 'layouts/head' %>
+
+    <style>
+        a.btn.btn-primary.btn-xs:visited {
+            color: #fff !important;
+        }
+        a:hover {
+            background-color: transparent !important;
+        }
+        a.has-arrow.waves-effect.waves-dark.active:hover {
+            background: #fff !important;
+        }
+        ul.collapse > li > a:hover {
+            background-color: transparent !important;
+        }
+        .mini-sidebar .sidebar-nav #sidebarnav > li > ul {
+            /* top: 0 !important; */
+        }
+        .search-form-control {
+            color: #fff !important;
+            text-shadow: 0 0 1px #fff;
+            background-image: linear-gradient(#f4f9f9, #f4f9f9), linear-gradient(rgba(164, 235, 243, 0.53), rgba(164, 235, 243, 0.53)) !important;
+        }
+        .search-form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #fff;
+            opacity: 1; /* Firefox */
+        }
+        .search-form-control:-ms-input-placeholder,
+        .search-form-control::-ms-input-placeholder { /* IE 10-11, Edge */
+            color: #fff;
+        }
+    </style>
+
+    <%= yield :head %>
+
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+
+    <%= render 'layouts/preloader' %>
+
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <div id="main-wrapper">
+
+        <%= render 'layouts/topbar' %>
+
+        <%= render 'layouts/sidebar' %>
+
+        <div class="page-wrapper">
+
+            <!-- Bread crumb and right sidebar toggle -->
+            <%= yield :header %>
+
+            <div class="container-fluid">
+
+                <!-- Start Feedback Messages -->
+                <%= yield :alert %>
+
+                <!-- Start Page Content -->
+                <%= yield %>
+
+            </div>
+
+            <%= render 'layouts/footer' %>
+
+        </div>
+
+    </div>
+    <!-- End Main Wrapper -->
+
+    <%#= javascript_pack_tag 'jquery_slimscroll' %>
+    <%#= javascript_pack_tag 'waves' %>
+    <%#= javascript_pack_tag 'sidebarmenu' %>
+    <%#= javascript_pack_tag 'jquery_sticky_kit' %>
+    <%#= javascript_pack_tag 'jquery_sparkline' %>
+    <%#= javascript_pack_tag 'custom' %>
+    <%#= javascript_pack_tag 'jQuery_style_switcher' %>
+
+    <%= yield :scripts %>
+
+</body>
+
 </html>

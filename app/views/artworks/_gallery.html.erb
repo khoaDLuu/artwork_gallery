@@ -1,0 +1,53 @@
+<div class="row el-element-overlay">
+
+  <% @artworks.each do |artwork| %>
+    <% if artwork.image.present? %>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="card">
+        <div class="el-card-item">
+          <div class="el-card-avatar el-overlay-1">
+            <%= link_to artwork_path(artwork),
+                class: 'image-popup-vertical-fit' do %>
+              <%= cl_image_tag artwork.image.key,
+                  alt: "Oops!",
+                  loading: "lazy",
+                  width: 420, height: 280,
+                  sign_url: true,
+                  gravity: "center",
+                  crop: "thumb" %>
+            <% end %>
+            <div class="el-overlay">
+              <%= link_to artwork_path(artwork) do %>
+              <ul class="el-info h-100">
+              </ul>
+              <% end %>
+              <ul class="el-info compact">
+                <li>
+                  <%= link_to artwork_path(artwork) do %>
+                    <span class="text-success"><%= artwork.name %></span>
+                  <% end %>
+                  <br />
+                  <p class="formal-text">
+                    <%= link_to user_profile_path(artwork.user) do %>
+                      <span class="text-muted">by </span>
+                      <strong><%= artwork.user.username %></strong>
+                    <% end %>
+                  </p>
+                  <br />
+                  <p class="formal-text">
+                    <%= artwork.fav_count %>
+                    <i class="icon-heart"></i>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  <% end %>
+
+</div>

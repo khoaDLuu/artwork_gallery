@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%= render 'layouts/head' %>
+
+    <style>
+        .alert {
+            margin-bottom: 0;
+        }
+        a:hover {
+            background-color: transparent !important;
+        }
+        .custom-footer {
+            z-index: 100;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.);
+            color: #fff;
+        }
+        .link-highlight {
+            color: #aee1e1 !important;
+            /* text-shadow: 0 0 2px #fff, 1px 1px 2px #ccc; */
+        }
+    </style>
+
+    <%= yield :head %>
+
+</head>
+
+<body>
+
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <div id="main-wrapper">
+
+        <%= yield :alert %>
+
+        <!-- Start Page Content -->
+        <%= yield %>
+
+        <!-- Page Footer -->
+        <footer class="custom-footer text-center">
+            <strong><a class="link-highlight" href="https://github.com/HienM7/artwork_gallery">Web project</a>
+            made with passion from Team 4</strong>
+            <br />
+            <small>
+            Template designed by
+            <a class="link-highlight" href="https://themedesigner.in">themedesigner.in</a>
+            - Artwork made by
+            Kitty-Craftsy on <a class="link-highlight" href="https://www.deviantart.com/kitty-craftsy/art/Magical-Forest-865182382" title="Deviant Art">
+            Deviant Art</a>
+            </small>
+        </footer>
+
+    </div>
+    <!-- End Main Wrapper -->
+
+    <%= yield :scripts %>
+
+</body>
+
+</html>
