@@ -15,7 +15,7 @@ class User < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :fav_artworks, through: :favorites, source: :artwork
 
-	def is_author(artw)
+	def is_author?(artw)
 		if self.artworks.find_by(id: artw.id) then true else false end
 	end
 

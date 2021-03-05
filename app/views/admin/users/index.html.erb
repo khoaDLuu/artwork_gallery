@@ -88,9 +88,9 @@
                       <%= user.point %>
                     </td>
                     <td>
-                      <% if user.is_admin %>
+                      <% if user.is_admin? %>
                       <span class="badge badge-pill badge-primary">admin</span>
-                      <% elsif user.is_banned %>
+                      <% elsif user.is_banned? %>
                       <span class="badge badge-pill badge-warning">banned</span>
                       <% end %>
                     </td>

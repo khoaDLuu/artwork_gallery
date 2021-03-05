@@ -10,7 +10,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item">
-              <% if current_user && current_user.is_admin %>
+              <% if current_user && current_user.is_admin? %>
                 <%= link_to "User", admin_users_path %>
               <% else %>
                 User
@@ -79,7 +79,7 @@
               </div>
               <hr>
 
-              <% if current_user && current_user.is_admin %>
+              <% if current_user && current_user.is_admin? %>
               <div class="text-center">
                   <%= link_to "Edit user profile", edit_admin_user_path(current_user), class: "btn btn-primary waves-effect waves-light" %>
               </div>
