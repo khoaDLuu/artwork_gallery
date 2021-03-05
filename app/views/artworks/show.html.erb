@@ -142,7 +142,7 @@
                 </div>
                 <div class="el-card-content">
 
-                  <% if not (current_user && current_user.is_admin) %>
+                  <% if not (current_user && current_user.is_admin?) %>
 
                   <div class="row m-t-10">
                     <div class="col-3 b-r">
@@ -179,7 +179,7 @@
                       </div>
                     </div>
 
-                    <% if current_user && current_user.is_author(@artwork) %>
+                    <% if current_user && current_user.is_author?(@artwork) %>
 
                     <div class="col-3 b-r">
                       <div class="text-center">
