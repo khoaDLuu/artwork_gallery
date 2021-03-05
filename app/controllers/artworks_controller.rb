@@ -134,25 +134,25 @@ class ArtworksController < ApplicationController
   end
 
   def download
-    if request.xhr?
-      dl_artw = Artwork.find(params[:id])
-
+    if not current_user
+      render json: { redirect_link: new_user_session_path }
+    elsif request.xhr?
       if params[:option] == 'free'
-        img_url = dl_artw.low_res_url
+        img_url = @artwork.low_res_url
 
-        transfer_ok = current_user.make_donation(dl_artw, params[:amount].to_i)
+        transfer_ok = current_user.make_donation(@artwork, params[:amount].to_i)
 
-        download_res dl_artw.name, img_url, transfer_ok
+        download_res @artwork.name, img_url, transfer_ok
 
       elsif params[:option] == 'paid'
-        img_url = dl_artw.image.service_url
+        img_url = @artwork.image.service_url
 
-        transfer_ok = current_user.make_purchase(dl_artw)
+        transfer_ok = current_user.make_purchase(@artwork)
 
-        download_res dl_artw.name, img_url, transfer_ok
+        download_res @artwork.name, img_url, transfer_ok
       end
     else
-      redirect_to dl_artw.low_res_url
+      redirect_to @artwork.low_res_url
     end
   end
 

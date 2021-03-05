@@ -11,9 +11,13 @@ class User < ApplicationRecord
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 	validates :credit_card,	numericality: true
 
-	has_many :artworks
+	has_many :artworks, dependent: :destroy
 	has_many :favorites, dependent: :destroy
-  has_many :fav_artworks, through: :favorites, source: :artwork
+	has_many :fav_artworks, through: :favorites, source: :artwork
+
+	def is_author(artw)
+		if self.artworks.find_by(id: artw.id) then true else false end
+	end
 
 	def make_donation(artw, amount)
 		transfer(artw.user, amount)
