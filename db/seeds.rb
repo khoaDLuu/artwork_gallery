@@ -21,7 +21,7 @@ users.each do |name, is_admin|
   user.password_confirmation = name
   user.email = "#{name}@dummymail.com"
   user.point = Faker::Number.within(range: 100..1000)
-  user.is_admin = is_admin
+  user.is_admin = true
   user.is_banned = false
   user.credit_card = Faker::PhoneNumber.cell_phone_in_e164[1..]
   user.save!
@@ -42,34 +42,7 @@ end
 end
 
 
-# DUMMY ARTWORKS
-puts "Seeding ARTWORKS table..."
-puts "======================"
-
-test_dir = 'TEST_artworks'
-artw_files = Dir.glob("app/assets/images/#{test_dir}/*") * 10
-
-default_artworks = artw_files.shuffle.collect { |af|
-  [
-    Faker::Movie.title,
-    "#{test_dir}/#{File.basename(af)}",
-    Faker::Number.within(range: 10..1000),
-    Faker::Boolean.boolean(true_ratio: 0.8) ? 1 : 0
-  ]
-}
-
-default_artworks.each do |name, path, value, is_public|
-  Artwork.create(
-    name: name,
-    img_link: path,
-    value: value,
-    is_public: is_public,
-    user_id: 1
-  )
-end
-
-
-# DUMMY CATEGORIES
+# CATEGORIES
 puts "Seeding CATEGORIES table..."
 puts "======================"
 

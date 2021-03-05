@@ -138,21 +138,33 @@ class ArtworksController < ApplicationController
       render json: { redirect_link: new_user_session_path }
     elsif request.xhr?
       if params[:option] == 'free'
+<<<<<<< HEAD
         img_url = @artwork.low_res_url
+=======
+        img_url = dl_artw.low_res_url
+>>>>>>> 275110b5d78d892d93e1c7027413295d28599fb8
 
         transfer_ok = current_user.make_donation(@artwork, params[:amount].to_i)
 
         download_res @artwork.name, img_url, transfer_ok
 
       elsif params[:option] == 'paid'
+<<<<<<< HEAD
         img_url = @artwork.image.service_url
+=======
+        img_url = dl_artw.image.service_url
+>>>>>>> 275110b5d78d892d93e1c7027413295d28599fb8
 
         transfer_ok = current_user.make_purchase(@artwork)
 
         download_res @artwork.name, img_url, transfer_ok
       end
     else
+<<<<<<< HEAD
       redirect_to @artwork.low_res_url
+=======
+      redirect_to dl_artw.low_res_url
+>>>>>>> 275110b5d78d892d93e1c7027413295d28599fb8
     end
   end
 
@@ -163,7 +175,11 @@ class ArtworksController < ApplicationController
     end
 
     def ensure_author
+<<<<<<< HEAD
       if current_user && @artwork.user != current_user
+=======
+      if @artwork.user != current_user
+>>>>>>> 275110b5d78d892d93e1c7027413295d28599fb8
         flash[:error] = "You are not authorized to view that page."
         redirect_to home_path
       end

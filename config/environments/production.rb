@@ -25,8 +25,20 @@ Rails.application.configure do
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
+  # config.public_file_server.enabled = true
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+
+  files = Dir[Rails.root.join('app', 'assets', 'stylesheets', '**', '[^_]*.{js,css,eot,svg,ttf,woff,woff2}*')]
+  files.map! {|file| file.sub(%r(#{Rails.root}/app/assets/stylesheets/), '') }
+  files.map! {|file| file.sub(%r(\.(coffee|scss)), '') }
+  config.assets.precompile += files
+  config.assets.precompile += ["css/style.css.scss"]
+
+  Rails.application.config.assets.configure do |env|
+    env.export_concurrent = false
+  end
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
