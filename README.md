@@ -2,7 +2,19 @@
 
 An artwork gallery website written in Ruby on Rails.
 
-The live demo version is available at [artrails.herokuapp.com](https://artrails.herokuapp.com/) (it may take a moment for the page to load due to Heroku's app sleeping policy).
+The live demo is available at [artrails.herokuapp.com](https://artrails.herokuapp.com/) (it may take a moment for the page to load due to Heroku's app sleeping policy).
+
+The website's homepage:
+
+![Artrails homepage](https://trello-attachments.s3.amazonaws.com/5fe5e36c56184658ec8d31b0/6041cabba75e6b215259fbc3/5cd9bb600ae5725a771ad583d927592e/image.png)
+
+
+## Requirements
+
+* Ruby 2.7.2
+* Ruby on Rails 6.0
+* PostgreSQL 12.6
+* Bootstrap v4.5
 
 
 ## Installation (for Ubuntu 18.04+)
@@ -60,21 +72,30 @@ The live demo version is available at [artrails.herokuapp.com](https://artrails.
 
     yarn --version
     ```
-5. Install PostgreSQL and create a database ([Detailed instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04))
+5. Install PostgreSQL ([Detailed instructions here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04))
     ```
     sudo apt update
 
     sudo apt install postgresql postgresql-contrib libpq-dev
     ```
-6. Set config environment variables **(or use .env instead)**
+    Then create a database.
+6. Create a .env file with the contents below
     ```
-    export POSTGRES_USER="<your pg username>"
+    POSTGRES_DB="<your PostgreSQL database name>"
 
-    export POSTGRES_PASSWORD="<your pg password>"
+    POSTGRES_USER="<your PostgreSQL username>"
 
-    export POSTGRES_DB="<your pg database>"
+    POSTGRES_PASSWORD="<your PostgreSQL password>"
 
-    export RAILS_ENV="development"
+    # POSTGRES_HOST="localhost"
+
+    RAILS_ENV="development"
+
+    CLOUD_NAME="<your Cloudinary cloud name>"
+
+    API_KEY="<your Cloudinary API key>"
+
+    API_SECRET="<your Cloudinary API secret>"
     ```
 6. Move to your directory of choice and clone this project
     ```
@@ -84,15 +105,35 @@ The live demo version is available at [artrails.herokuapp.com](https://artrails.
     ```
     bundle install
 
-    rake db:setup
+    rails db:setup
 
-    rake db:migrate
+    rails db:migrate
 
-    rake db:seed
+    rails db:seed
     ```
 8. If you make it here, you should have the website up and running locally when entering this in your terminal:
     ```
     rails s
     ```
 
+
+## Design notes
+
+The website uses [Cloudinary](https://cloudinary.com/) as the image management service.
+
+
 ## Features
+
+* Upload and manage artworks
+
+* Search, favorite, download (and buy using points), share artworks
+
+* View user profiles
+
+* View transaction list (feature in progress)
+
+
+## Contributors
+
+* [KhoaDLuu](https://github.com/khoaDLuu)
+* [HienM7](https://github.com/HienM7)
